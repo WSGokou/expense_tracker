@@ -2,17 +2,17 @@ import {
   FetchCreateContextFnOptions,
   fetchRequestHandler,
 } from '@trpc/server/adapters/fetch';
-import * as trpc from '@trpc/server';
-import * as trpcNext from '@trpc/server/adapters/next';
+// import * as trpc from '@trpc/server';
+// import * as trpcNext from '@trpc/server/adapters/next';
 import {appRouter} from '../router';
 
-interface CreateNextContextOptions {}
+// interface CreateNextContextOptions {}
 
-export async function createContextInner(_opts: CreateNextContextOptions) {
-  return {};
-}
+// export async function createContextInner(_opts: CreateNextContextOptions) {
+//   return {};
+// }
 
-export type Context = trpc.inferAsyncReturnType<typeof createContextInner>;
+// export type Context = trpc.inferAsyncReturnType<typeof createContextInner>;
 
 const handler = (request: Request) => {
   console.log(`incoming request ${request.url}`);
