@@ -1,8 +1,7 @@
 import React from 'react';
 import {AddExpense, ListExpenses} from './Expenses';
-import {Params} from 'next/dist/shared/lib/router/utils/route-matcher';
 
-const ExpensesPage = ({params}: Params) => {
+const ExpensesPage = ({params}: any) => {
   const url = params.slug;
 
   const render = [
