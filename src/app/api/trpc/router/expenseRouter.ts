@@ -3,8 +3,13 @@ import {t} from '../trpc-router';
 import {z} from 'zod';
 
 export const expenseRouter = t.router({
-  list: t.procedure.query(() => {
-    return prisma.expense.findMany();
+  list: t.procedure.input(z.number()).query(({input}) => {
+    const userId = input;
+    return prisma.expense.findMany({
+      where: {
+        userId,
+      },
+    });
   }),
 
   create: t.procedure
