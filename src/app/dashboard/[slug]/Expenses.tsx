@@ -2,6 +2,7 @@
 import {trpc} from '@/utils/trpc';
 import React from 'react';
 import ExpenseForm from './ExpenseForm';
+import ExpenseItem from './ExpenseItem';
 import {useSession} from 'next-auth/react';
 
 export const ListExpenses = () => {
@@ -26,11 +27,10 @@ export const ListExpenses = () => {
       {!expenses?.length
         ? 'No expenses'
         : expenses?.map((expense) => (
-            <div key={expense.id}>
-              <h1>{expense.description}</h1>
-              <p>{expense.note}</p>
-              <p>{`£${expense.amount}`}</p>
-            </div>
+            <ExpenseItem
+              key={expense.id}
+              {...expense}
+            />
           ))}
     </div>
   );
@@ -43,10 +43,6 @@ export const AddExpense = () => {
       <ExpenseForm />
     </div>
   );
-};
-
-export const ExpenseItem = () => {
-  return <div>ExpenseItem</div>;
 };
 
 export const EditExpense = () => {
