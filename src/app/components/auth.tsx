@@ -13,23 +13,40 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSignIn}>
+      <p>Test User Login:</p>
+      <p>Email = test@test.com</p>
+      <p>Password = Password123</p>
       <input
         type='text'
         value={email}
+        placeholder='email'
         onChange={(e) => setEmail(e.target.value)}
       />
       <br />
       <input
         type='password'
         value={password}
+        placeholder={'password'}
         onChange={(e) => setPassword(e.target.value)}
       />
       <br />
-      <button type='submit'>Login</button>
+      <button
+        className='border-2 border-black'
+        type='submit'
+      >
+        Login
+      </button>
     </form>
   );
 };
 
 export const LogoutButton = () => {
-  return <button onClick={() => signOut()}>LogoutButton</button>;
+  return (
+    <button
+      className='border-2 border-black'
+      onClick={() => signOut()}
+    >
+      LogoutButton
+    </button>
+  );
 };

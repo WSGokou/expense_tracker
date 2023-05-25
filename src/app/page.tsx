@@ -1,6 +1,6 @@
 import ExpensesPage from './dashboard/[slug]/page';
 import {getServerSession} from 'next-auth';
-import {LoginForm, LogoutButton} from './components/auth';
+import {LoginForm} from './components/auth';
 import {authOptions} from './api/auth/[...nextauth]/route';
 import User from './components/User';
 
