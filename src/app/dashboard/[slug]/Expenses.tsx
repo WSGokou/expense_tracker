@@ -14,7 +14,7 @@ export const ListExpenses = () => {
     data: expenses,
     isLoading,
     isFetching,
-  } = trpc.expenses.list.useQuery(userId);
+  } = trpc.expenses.getAll.useQuery(userId);
 
   if (isLoading || isFetching) {
     return <p>Loading...</p>;

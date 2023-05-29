@@ -1,9 +1,20 @@
 import {prisma} from '@/utils/prisma';
 import {t} from '../trpc-router';
 import {z} from 'zod';
+import {TRPCError} from '@trpc/server';
 
 export const expenseRouter = t.router({
-  list: t.procedure.input(z.number()).query(({input}) => {
+  getById: t.procedure
+    .input(z.object({id: z.number()}))
+    .query(async ({input}) => {
+      const expense = await prisma.expense.findUnique({where: {id: input.id}});
+
+      if (!expense) throw new TRPCError({code: 'NOT_FOUND'});
+
+      return expense;
+    }),
+
+  getAll: t.procedure.input(z.number()).query(({input}) => {
     const userId = input;
     return prisma.expense.findMany({
       where: {
@@ -21,9 +32,9 @@ export const expenseRouter = t.router({
         userId: z.number(),
       }),
     )
-    .mutation(({input}) => {
+    .mutation(async ({input}) => {
       const {description, note, amount, userId} = input;
-      return prisma.expense.create({
+      const expense = await prisma.expense.create({
         data: {
           description,
           note,
@@ -31,5 +42,7 @@ export const expenseRouter = t.router({
           userId,
         },
       });
+
+      return expense;
     }),
 });
