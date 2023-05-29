@@ -33,7 +33,7 @@ export const TrpcProvider: React.FC<{children: React.ReactNode}> = ({
             const fetch = getFetch();
             return fetch(input, {
               ...init,
-              credentials: 'include',
+              // credentials: 'include',
             });
           },
         }),
