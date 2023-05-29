@@ -14,16 +14,16 @@ export const ListExpenses = () => {
     data: expenses,
     isLoading,
     isFetching,
-  } = trpc.expenses.list.useQuery(userId);
+  } = trpc.expenses.getAll.useQuery(userId);
 
   if (isLoading || isFetching) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div>
+    <div className='w-1/2'>
       ListExpenses
-      {JSON.stringify(expenses)}
+      {/* {JSON.stringify(expenses)} */}
       {!expenses?.length
         ? 'No expenses'
         : expenses?.map((expense) => (
@@ -36,11 +36,23 @@ export const ListExpenses = () => {
   );
 };
 
-export const AddExpense = () => {
-  const response = trpc.expenses.create.useMutation();
+export const ViewExpense = ({id}: {id: number}) => {
+  const {data: expense} = trpc.expenses.getById.useQuery({id});
+
   return (
     <div>
-      <ExpenseForm />
+      {/* {JSON.stringify(expense)} */}
+      <h1>{expense?.description}</h1>
+      <p>{expense?.note}</p>
+      <p>{`£${expense?.amount}`}</p>
+    </div>
+  );
+};
+
+export const AddExpense = () => {
+  return (
+    <div>
+      <ExpenseForm page='add' />
     </div>
   );
 };

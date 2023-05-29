@@ -1,7 +1,13 @@
 import React from 'react';
 import {AddExpense, ListExpenses} from './Expenses';
 
-const ExpensesPage = ({params}: any) => {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+const ExpensesPage = ({params}: Props) => {
   const url = params.slug;
 
   const render = [

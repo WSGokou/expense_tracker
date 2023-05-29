@@ -1,5 +1,16 @@
 import React from 'react';
+import {ViewExpense} from '../Expenses';
 
-const ExpenseID = () => {};
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-export default ExpenseID;
+const ExpensePage = ({params}: Props) => {
+  const id = Number(params.id);
+
+  return <ViewExpense id={id} />;
+};
+
+export default ExpensePage;
