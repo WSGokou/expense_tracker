@@ -17,7 +17,7 @@ import {appRouter} from '../router';
 const handler = (request: Request) => {
   console.log(`incoming request ${request.url}`);
   return fetchRequestHandler({
-    endpoint: 'api/trpc',
+    endpoint: '/api/trpc',
     req: request,
     router: appRouter,
     createContext: function (
