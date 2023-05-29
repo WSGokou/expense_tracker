@@ -1,6 +1,5 @@
-import type {Expense} from '@prisma/client';
 import React from 'react';
-import ExpenseView from './ExpenseView';
+import {ViewExpense} from '../Expenses';
 
 type Props = {
   params: {
@@ -8,10 +7,10 @@ type Props = {
   };
 };
 
-const Expense = ({params}: Props) => {
+const ExpensePage = ({params}: Props) => {
   const id = Number(params.id);
 
-  return <ExpenseView id={id} />;
+  return <ViewExpense id={id} />;
 };
 
-export default Expense;
+export default ExpensePage;

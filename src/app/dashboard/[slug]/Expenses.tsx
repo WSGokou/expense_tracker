@@ -36,6 +36,19 @@ export const ListExpenses = () => {
   );
 };
 
+export const ViewExpense = ({id}: {id: number}) => {
+  const {data: expense} = trpc.expenses.getById.useQuery({id});
+
+  return (
+    <div>
+      {/* {JSON.stringify(expense)} */}
+      <h1>{expense?.description}</h1>
+      <p>{expense?.note}</p>
+      <p>{`£${expense?.amount}`}</p>
+    </div>
+  );
+};
+
 export const AddExpense = () => {
   return (
     <div>
