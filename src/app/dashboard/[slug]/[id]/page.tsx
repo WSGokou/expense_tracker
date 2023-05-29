@@ -3,7 +3,13 @@ import {trpc} from '@/utils/trpc';
 import type {Expense} from '@prisma/client';
 import React from 'react';
 
-const Expense = ({params}: any) => {
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+const Expense = ({params}: Props) => {
   const id = Number(params.id);
 
   const {data: expense} = trpc.expenses.getById.useQuery({id});
