@@ -21,9 +21,9 @@ export const ListExpenses = () => {
   }
 
   return (
-    <div>
+    <div className='w-1/2'>
       ListExpenses
-      {JSON.stringify(expenses)}
+      {/* {JSON.stringify(expenses)} */}
       {!expenses?.length
         ? 'No expenses'
         : expenses?.map((expense) => (
@@ -37,10 +37,9 @@ export const ListExpenses = () => {
 };
 
 export const AddExpense = () => {
-  const response = trpc.expenses.create.useMutation();
   return (
     <div>
-      <ExpenseForm />
+      <ExpenseForm page='add' />
     </div>
   );
 };
