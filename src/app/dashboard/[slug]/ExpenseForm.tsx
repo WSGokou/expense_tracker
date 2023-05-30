@@ -1,3 +1,4 @@
+import Title from '@/app/components/Title';
 import {trpc} from '@/utils/trpc';
 import type {Expense} from '@prisma/client';
 import {useSession} from 'next-auth/react';
@@ -14,14 +15,15 @@ const ExpenseForm = ({page, expense}: {page: string; expense?: Expense}) => {
   const update = trpc.expenses.update.useMutation();
 
   return (
-    <div>
-      <h1>Enter details below:</h1>
-      <div>
+    <div className='flex flex-col items-center'>
+      <Title text={'Enter expense details:'} />
+      <div className='flex flex-col gap-2 w-60 md:w-96'>
         <input
           type='text'
           name='description'
           value={description}
           placeholder='Description'
+          className='border border-blue-200 rounded py-2 px-4'
           onChange={(e) => {
             setDescription(e.target.value);
           }}
@@ -31,6 +33,7 @@ const ExpenseForm = ({page, expense}: {page: string; expense?: Expense}) => {
           name='amount'
           value={amount}
           placeholder='Amount'
+          className='border border-blue-200 rounded py-2 px-4'
           onChange={(e) => {
             setAmount(Number(e.target.value));
           }}
@@ -39,12 +42,13 @@ const ExpenseForm = ({page, expense}: {page: string; expense?: Expense}) => {
           name='note'
           value={note}
           placeholder='Add a note for your expense (optional)'
+          className='border border-blue-200 rounded py-2 px-4 h-40'
           onChange={(e) => {
             setNote(e.target.value);
           }}
         />
         <button
-          className='border border-black'
+          className='border border-blue-200 text-slate-50 font-medium rounded py-2 px-4 bg-blue-500'
           onClick={() => {
             page === 'add'
               ? description &&
