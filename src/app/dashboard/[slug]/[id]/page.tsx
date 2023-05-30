@@ -1,5 +1,5 @@
 import React from 'react';
-import {ViewExpense} from '../Expenses';
+import {ViewExpense} from '../ExpensesFuncs';
 
 type Props = {
   params: {

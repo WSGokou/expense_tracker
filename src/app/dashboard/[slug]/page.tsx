@@ -1,5 +1,5 @@
 import React from 'react';
-import {AddExpense, ListExpenses} from './Expenses';
+import {AddExpense, ListExpenses} from './ExpensesFuncs';
 
 type Props = {
   params: {
@@ -26,10 +26,12 @@ const ExpensesPage = ({params}: Props) => {
   const toRender = render.filter((item) => item.page === url);
 
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       {toRender.map((item) => (
         <div key={item.page}>
-          <h1>{item.title}</h1>
+          <h1 className='text-3xl font-semibold text-center my-5'>
+            {item.title}
+          </h1>
           {item.component}
         </div>
       ))}

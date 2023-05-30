@@ -21,8 +21,7 @@ export const ListExpenses = () => {
   }
 
   return (
-    <div className='w-1/2'>
-      ListExpenses
+    <div className='flex flex-col gap-2 w-64 md:w-96'>
       {/* {JSON.stringify(expenses)} */}
       {!expenses?.length
         ? 'No expenses'
@@ -37,14 +36,28 @@ export const ListExpenses = () => {
 };
 
 export const ViewExpense = ({id}: {id: number}) => {
-  const {data: expense} = trpc.expenses.getById.useQuery({id});
+  const {
+    data: expense,
+    isLoading,
+    isFetching,
+  } = trpc.expenses.getById.useQuery({id});
+
+  if (isLoading || isFetching) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
-      {/* {JSON.stringify(expense)} */}
-      <h1>{expense?.description}</h1>
-      <p>{expense?.note}</p>
-      <p>{`£${expense?.amount}`}</p>
+      <div>
+        {/* {JSON.stringify(expense)} */}
+        <h1>{expense?.description}</h1>
+        <p>{expense?.note}</p>
+        <p>{`£${expense?.amount}`}</p>
+      </div>
+      <ExpenseForm
+        page='edit'
+        expense={expense}
+      />
     </div>
   );
 };
@@ -55,8 +68,4 @@ export const AddExpense = () => {
       <ExpenseForm page='add' />
     </div>
   );
-};
-
-export const EditExpense = () => {
-  return <div>Edit Expense</div>;
 };
