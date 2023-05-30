@@ -1,5 +1,5 @@
 import React from 'react';
-import {AddExpense, ListExpenses} from './Expenses';
+import {AddExpense, ListExpenses} from './ExpensesFuncs';
 
 type Props = {
   params: {
