@@ -37,7 +37,15 @@ export const ListExpenses = () => {
 };
 
 export const ViewExpense = ({id}: {id: number}) => {
-  const {data: expense} = trpc.expenses.getById.useQuery({id});
+  const {
+    data: expense,
+    isLoading,
+    isFetching,
+  } = trpc.expenses.getById.useQuery({id});
+
+  if (isLoading || isFetching) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
@@ -47,7 +55,10 @@ export const ViewExpense = ({id}: {id: number}) => {
         <p>{expense?.note}</p>
         <p>{`£${expense?.amount}`}</p>
       </div>
-      <ExpenseForm page='edit' />
+      <ExpenseForm
+        page='edit'
+        expense={expense}
+      />
     </div>
   );
 };

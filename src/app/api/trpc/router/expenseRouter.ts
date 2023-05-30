@@ -45,4 +45,29 @@ export const expenseRouter = t.router({
 
       return expense;
     }),
+
+  update: t.procedure
+    .input(
+      z.object({
+        id: z.number(),
+        description: z.string(),
+        note: z.string(),
+        amount: z.number(),
+      }),
+    )
+    .mutation(async ({input}) => {
+      const {id, description, note, amount} = input;
+      const expense = await prisma.expense.update({
+        where: {
+          id,
+        },
+        data: {
+          description,
+          note,
+          amount,
+        },
+      });
+
+      return expense;
+    }),
 });
