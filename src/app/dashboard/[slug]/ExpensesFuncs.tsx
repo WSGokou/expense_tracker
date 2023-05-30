@@ -4,7 +4,9 @@ import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import ExpenseItem from './ExpenseItem';
 import {useSession} from 'next-auth/react';
+import Title from '@/app/components/Title';
 
+// List of all expenses
 export const ListExpenses = () => {
   const session = useSession();
   const user = session.data?.user;
@@ -35,6 +37,7 @@ export const ListExpenses = () => {
   );
 };
 
+// Main expense page
 export const ViewExpense = ({id}: {id: number}) => {
   const {
     data: expense,
@@ -46,13 +49,19 @@ export const ViewExpense = ({id}: {id: number}) => {
     return <p>Loading...</p>;
   }
 
+  if (!expense) {
+    return <Title text='Expense does not exist' />;
+  }
+
   return (
-    <div>
-      <div>
+    <div className='flex flex-col items-center text-center'>
+      <Title text={expense.description} />
+      <div className='flex flex-col items-center py-5 mb-5 w-60 md:w-96 text-slate-50 border-2 bg-blue-500 border-blue-500 rounded'>
         {/* {JSON.stringify(expense)} */}
-        <h1>{expense?.description}</h1>
-        <p>{expense?.note}</p>
-        <p>{`£${expense?.amount}`}</p>
+        <div className='flex items-center justify-center p-4 text-xl font-medium mb-5 bg-yellow-500 rounded-full'>
+          {`£${expense?.amount}`}
+        </div>
+        <p className='text-lg break-words'>{expense?.note}</p>
       </div>
       <ExpenseForm
         page='edit'
@@ -62,6 +71,7 @@ export const ViewExpense = ({id}: {id: number}) => {
   );
 };
 
+// Add expense page
 export const AddExpense = () => {
   return (
     <div>
