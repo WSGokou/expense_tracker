@@ -6,7 +6,7 @@ const ExpenseItem = ({id, description, note, amount}: Expense) => {
   return (
     <Link
       href={`/dashboard/view/${id}`}
-      className='flex flex-col border border-black'
+      className='flex flex-col border-4 border-blue-500 px-4 gap-2 py-2 min-h-fit rounded'
     >
       <div className='flex justify-between'>
         <h1>{description}</h1>

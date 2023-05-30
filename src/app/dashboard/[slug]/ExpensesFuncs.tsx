@@ -21,8 +21,7 @@ export const ListExpenses = () => {
   }
 
   return (
-    <div className='w-1/2'>
-      ListExpenses
+    <div className='flex flex-col gap-2 w-64 md:w-96'>
       {/* {JSON.stringify(expenses)} */}
       {!expenses?.length
         ? 'No expenses'
