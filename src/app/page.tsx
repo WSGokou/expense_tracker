@@ -8,7 +8,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
-    <div>
+    <div className='flex flex-col text-center'>
       <h1>Home</h1>
       <h2>Server Session</h2>
       <pre>{JSON.stringify(session)}</pre>

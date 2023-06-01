@@ -83,7 +83,11 @@ export const AddExpense = () => {
 
 // Delete Expense button
 export const DeleteExpense = ({id}: {id: number}) => {
-  const {mutate} = trpc.expenses.delete.useMutation();
+  const {mutate} = trpc.expenses.delete.useMutation({
+    onSuccess: () => {
+      console.log('deleted');
+    },
+  });
 
   return (
     <button

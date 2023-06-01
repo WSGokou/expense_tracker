@@ -18,6 +18,7 @@ export const LoginForm = () => {
       <p>Password = Password123</p>
       <input
         type='text'
+        className='border w-20'
         value={email}
         placeholder='email'
         onChange={(e) => setEmail(e.target.value)}
@@ -25,6 +26,7 @@ export const LoginForm = () => {
       <br />
       <input
         type='password'
+        className='border w-20'
         value={password}
         placeholder={'password'}
         onChange={(e) => setPassword(e.target.value)}
