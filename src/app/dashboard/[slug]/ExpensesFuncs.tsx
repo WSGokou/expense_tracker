@@ -67,6 +67,7 @@ export const ViewExpense = ({id}: {id: number}) => {
         page='edit'
         expense={expense}
       />
+      <DeleteExpense id={id} />
     </div>
   );
 };
@@ -77,5 +78,25 @@ export const AddExpense = () => {
     <div>
       <ExpenseForm page='add' />
     </div>
+  );
+};
+
+// Delete Expense button
+export const DeleteExpense = ({id}: {id: number}) => {
+  const {mutate} = trpc.expenses.delete.useMutation({
+    onSuccess: () => {
+      console.log('deleted');
+    },
+  });
+
+  return (
+    <button
+      onClick={() => {
+        mutate({id});
+      }}
+      className='text-slate-50 font-medium rounded mt-1 py-2 px-4 w-60 md:w-96 bg-red-500'
+    >
+      Delete Expense
+    </button>
   );
 };

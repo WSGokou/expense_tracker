@@ -18,7 +18,7 @@ interface IProps {
 export default function RootLayout({children}: IProps) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex justify-center`}>
         <Providers>
           <Navbar />
           {children}

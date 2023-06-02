@@ -48,7 +48,7 @@ const ExpenseForm = ({page, expense}: {page: string; expense?: Expense}) => {
           }}
         />
         <button
-          className='border border-blue-200 text-slate-50 font-medium rounded py-2 px-4 bg-blue-500'
+          className='text-slate-50 font-medium rounded py-2 px-4 bg-blue-500'
           onClick={() => {
             page === 'add'
               ? description &&

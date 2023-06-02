@@ -70,4 +70,12 @@ export const expenseRouter = t.router({
 
       return expense;
     }),
+
+  delete: t.procedure
+    .input(z.object({id: z.number()}))
+    .mutation(async ({input}) => {
+      const expense = await prisma.expense.delete({where: {id: input.id}});
+
+      return expense;
+    }),
 });
