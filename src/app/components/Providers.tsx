@@ -3,6 +3,7 @@
 import React, {ReactNode} from 'react';
 import {TrpcProvider} from '@/utils/trpc-provider';
 import {SessionProvider} from 'next-auth/react';
+import {ToastProvider} from '@/utils/ToastContext';
 
 interface Props {
   children?: ReactNode;
@@ -11,7 +12,9 @@ interface Props {
 const Providers = ({children}: Props) => {
   return (
     <SessionProvider>
-      <TrpcProvider>{children}</TrpcProvider>
+      <TrpcProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </TrpcProvider>
     </SessionProvider>
   );
 };

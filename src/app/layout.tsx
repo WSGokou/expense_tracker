@@ -3,6 +3,7 @@ import {Inter} from 'next/font/google';
 import {ReactNode} from 'react';
 import Providers from './components/Providers';
 import Navbar from './components/Navbar';
+import {ToastComponent} from './components/ToastComponent';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -17,11 +18,12 @@ interface IProps {
 
 export default function RootLayout({children}: IProps) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`${inter.className} flex justify-center`}>
         <Providers>
           <Navbar />
           {children}
+          <ToastComponent />
         </Providers>
       </body>
     </html>
