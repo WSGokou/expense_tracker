@@ -15,8 +15,8 @@ interface Toast {
 }
 
 interface ToastOptions {
-  autoDelete?: boolean;
-  autoDeleteTime?: number;
+  autoClose?: boolean;
+  autoCloseTime?: number;
 }
 
 export const useToast = () => {
@@ -59,10 +59,10 @@ export const useToast = () => {
 
     dispatch({type: 'ADD_TOAST', toast: toastProperties});
 
-    if (options.autoDelete) {
+    if (options.autoClose) {
       setTimeout(() => {
         dispatch({type: 'REMOVE_TOAST', id: toastProperties.id});
-      }, options.autoDeleteTime || 3000);
+      }, options.autoCloseTime || 4000);
     }
   };
 

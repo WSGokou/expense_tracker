@@ -21,7 +21,7 @@ export const ToastComponent = () => {
 
   return (
     <>
-      <div className="notification-container fixed box-border text-sm z-50 top-3 right-3">
+      <div className="notification-container fixed box-border text-sm z-50 bottom-3 right-3">
         {toastList.map((toast) => (
           <div
             key={toast.id}
