@@ -4,7 +4,7 @@ import errorIcon from '@/assets/error.svg';
 import infoIcon from '@/assets/info.svg';
 import warningIcon from '@/assets/warning.svg';
 import {StaticImageData} from 'next/image';
-import {ToastContext} from './ToastContext';
+import {ToastContext} from '@/utils/toastContext';
 
 interface Toast {
   id: number;

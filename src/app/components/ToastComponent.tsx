@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, {useContext} from 'react';
-import {ToastContext} from '@/utils/ToastContext';
+import {ToastContext} from '@/utils/toastContext';
 
 export const ToastComponent = () => {
   const context = useContext(ToastContext);
