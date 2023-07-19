@@ -37,13 +37,13 @@ export const useToast = () => {
       description: message,
       bgColor:
         type === 'success'
-          ? 'bg-[#5cb85c]'
+          ? 'bg-green-500'
           : type === 'error'
-          ? 'bg-[#d9534f]'
+          ? 'bg-red-500'
           : type === 'info'
-          ? 'bg-[#5bc0de]'
+          ? 'bg-blue-500'
           : type === 'warning'
-          ? 'bg-[#f0ad4e]'
+          ? 'bg-yellow-500'
           : '',
       icon:
         type === 'success'
