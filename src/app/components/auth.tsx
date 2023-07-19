@@ -48,7 +48,7 @@ export const LogoutButton = () => {
       className='border-2 border-black'
       onClick={() => signOut()}
     >
-      LogoutButton
+      Logout
     </button>
   );
 };
